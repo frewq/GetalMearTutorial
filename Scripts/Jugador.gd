@@ -1,6 +1,12 @@
 extends "res://Scripts/Caracter.gd"
 
 var movimiento = Vector2()
+enum modos_vision {OSCURO, VISION_NOCTURNA}
+var modo_vision
+
+func _ready():
+	Global.Jugador = self
+	modo_vision = modos_vision.OSCURO
 
 func _process(delta):
 	actualizar_movimiento(delta)
@@ -26,10 +32,24 @@ func actualizar_movimiento(delta):
 func _input(event):
 	if Input.is_action_just_pressed("ui_select"):
 		conmutar_foco()
+	
+	if Input.is_action_just_pressed("ui_cambiar_modo_vision"):
+		cambiar_modo_vision()
 
 func conmutar_foco():
 	if $Foco.enabled:
 		$Foco.enabled = false
 	else:
 		$Foco.enabled = true
-		
+
+func cambiar_modo_vision():
+	if modo_vision == modos_vision.OSCURO:
+		get_tree().call_group("interface", "visionNocturna")
+		modo_vision = modos_vision.VISION_NOCTURNA
+	elif modo_vision == modos_vision.VISION_NOCTURNA:
+		get_tree().call_group("interface", "visionOscura")
+		modo_vision = modos_vision.OSCURO
+	
+	
+	
+	
