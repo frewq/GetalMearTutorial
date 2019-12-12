@@ -5,13 +5,16 @@ const MAXIMO_RANGO_DETECCION = 200
 const ROJO = Color(1, 0.25, 0.25)
 const WHITE = Color (1,1,1)
 
-onready var Jugador = get_node("/root/Nivel1/Jugador")
+onready var Jugador = Global.Jugador
 
 func _process(delta):
 	if Jugador_esta_en_FOV_Tolerancia() and Jugador_a_la_vista():
 		$Foco.color = ROJO
 	else:
 		$Foco.color = WHITE
+		
+func _ready():
+	add_to_group("npc")
 	
 func Jugador_esta_en_FOV_Tolerancia():
 	var NPC_mira_direccion = Vector2(1,0).rotated(global_rotation)
@@ -37,3 +40,11 @@ func Jugador_a_la_vista():
 		return true
 	else:
 		return false
+
+func mode_VisionNocturna():
+	$Foco.enabled = false
+
+func mode_VisionOscura():
+	$Foco.enabled = true
+
+

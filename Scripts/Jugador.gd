@@ -3,6 +3,7 @@ extends "res://Scripts/Caracter.gd"
 var movimiento = Vector2()
 enum modos_vision {OSCURO, VISION_NOCTURNA}
 var modo_vision
+var vision_cambio_cooldown = false
 
 func _ready():
 	Global.Jugador = self
@@ -33,8 +34,10 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select"):
 		conmutar_foco()
 	
-	if Input.is_action_just_pressed("ui_cambiar_modo_vision"):
+	if Input.is_action_just_pressed("ui_cambiar_modo_vision") and not vision_cambio_cooldown:
 		cambiar_modo_vision()
+		vision_cambio_cooldown = true
+		$ModoVisionReloj.start()
 
 func conmutar_foco():
 	if $Foco.enabled:
@@ -49,7 +52,7 @@ func cambiar_modo_vision():
 	elif modo_vision == modos_vision.VISION_NOCTURNA:
 		get_tree().call_group("interface", "visionOscura")
 		modo_vision = modos_vision.OSCURO
-	
-	
-	
-	
+
+
+func _on_ModoVisionReloj_timeout():
+	vision_cambio_cooldown = false

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Escenas/Puerta.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/PuertaBloqueada.gd" type="Script" id=2]
+[ext_resource path="res://GFX/PNG/Tiles/tile_463.png" type="Texture" id=3]
+[ext_resource path="res://Escenas/PadNumerico.tscn" type="PackedScene" id=4]
+
+[node name="PuertaBloqueada" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="3"]
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+[node name="PadNumerico" parent="CanvasLayer" index="0" instance=ExtResource( 4 )]
+visible = false
+[connection signal="combinacion_correcta" from="CanvasLayer/PadNumerico" to="." method="_on_PadNumerico_combinacion_correcta"]

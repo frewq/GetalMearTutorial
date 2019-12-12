@@ -5,7 +5,7 @@
 [ext_resource path="res://GFX/PNG/Hitman 1/hitman1_stand.png" type="Texture" id=3]
 [ext_resource path="res://Escenas/Foco.tscn" type="PackedScene" id=4]
 
-[node name="Jugador" index="0" instance=ExtResource( 1 )]
+[node name="Jugador" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
@@ -20,3 +20,7 @@ visible = false
 
 [node name="Light2D" type="Light2D" parent="." index="4"]
 texture = ExtResource( 3 )
+
+[node name="ModoVisionReloj" type="Timer" parent="." index="5"]
+wait_time = 1.5
+[connection signal="timeout" from="ModoVisionReloj" to="." method="_on_ModoVisionReloj_timeout"]
