@@ -51,7 +51,6 @@ position = Vector2( 32, 0 )
 scale = Vector2( 1, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CuerpoCamara"]
-visible = false
 shape = SubResource( 1 )
 disabled = true
 

@@ -10,6 +10,7 @@ onready var Jugador = Global.Jugador
 func _process(delta):
 	if Jugador_esta_en_FOV_Tolerancia() and Jugador_a_la_vista():
 		$Foco.color = ROJO
+		get_tree().call_group("MedidorSospecha", "jugador_visto")
 	else:
 		$Foco.color = WHITE
 		

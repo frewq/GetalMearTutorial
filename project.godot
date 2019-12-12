@@ -58,6 +58,11 @@ ui_cambiar_modo_vision={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
  ]
 }
+conmutar_disfraz={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -65,6 +70,7 @@ ui_cambiar_modo_vision={
 2d_physics/layer_2="Terreno"
 2d_physics/layer_3="CamarasSeguridad"
 2d_physics/layer_4="Guardia"
+2d_physics/layer_5="Disfraz"
 
 [rendering]
 
