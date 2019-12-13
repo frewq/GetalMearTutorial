@@ -7,6 +7,7 @@ func _ready():
 	add_to_group("interface")
 	color = OSCURO
 	get_tree().call_group("Etiquetas", "hide")
+	visible = true
 
 func visionNocturna():
 	inform_npc("mode_VisionNocturna")

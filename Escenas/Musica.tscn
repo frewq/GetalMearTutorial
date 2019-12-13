@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SFX/Music/Metal Gear Solid 2 [Sons of Liberty] - Complete Soundtrack - 113 - Engine Room (64kbit_Opus) (2).ogg" type="AudioStream" id=1]
+
+[node name="Musica" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -15.0
+autoplay = true

@@ -16,4 +16,4 @@ func jugador_visto():
 		fin_juego()
 
 func fin_juego():
-	get_tree().quit()
+	get_tree().change_scene("res://Escenas/GameOver.tscn")

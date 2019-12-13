@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/PantallaBienvenida.gd" type="Script" id=1]
+[ext_resource path="res://Tema.tres" type="Theme" id=2]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_blue.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Interface/Fonts/kenvector_future.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="PantallaBienvenida" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer"]
+margin_left = 312.0
+margin_top = 150.0
+margin_right = 712.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 400, 300 )
+texture = ExtResource( 3 )
+patch_margin_left = 12
+patch_margin_top = 40
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Bienvenido"
+align = 1
+autowrap = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 89.0
+margin_right = 360.0
+margin_bottom = 130.0
+
+[node name="ButtonTutorial" type="Button" parent="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer"]
+margin_left = 80.0
+margin_right = 280.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 200, 0 )
+text = "Tutorial"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 134.0
+margin_right = 360.0
+margin_bottom = 175.0
+
+[node name="ButtonHistoria" type="Button" parent="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2"]
+margin_left = 80.0
+margin_right = 280.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 200, 0 )
+text = "Historia"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/NinePatchRect/VBoxContainer"]
+margin_top = 179.0
+margin_right = 360.0
+margin_bottom = 220.0
+
+[node name="ButtonSalir" type="Button" parent="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3"]
+margin_left = 80.0
+margin_right = 280.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 200, 0 )
+text = "SALIR"
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer/ButtonTutorial" to="." method="_on_ButtonTutorial_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/ButtonHistoria" to="." method="_on_ButtonHistoria_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/ButtonHistoria" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3/ButtonSalir" to="." method="_on_ButtonSalir_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3/ButtonSalir" to="." method="_on_Button_pressed"]

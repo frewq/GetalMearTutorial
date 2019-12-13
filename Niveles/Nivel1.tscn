@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Navigation2D.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Destinos.gd" type="Script" id=2]
@@ -9,13 +9,14 @@
 [ext_resource path="res://Tilesets/AutoTileParedes.tres" type="TileSet" id=7]
 [ext_resource path="res://Escenas/Caracteres/CamaraSeguridad.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Escenas/Caracteres/Guardia.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/VisionNocturna.gd" type="Script" id=10]
+[ext_resource path="res://Escenas/VisionNocturna.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Tilesets/Muebles.tres" type="TileSet" id=11]
 [ext_resource path="res://Escenas/GeneradorCombinaciones.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Escenas/Computadora.tscn" type="PackedScene" id=13]
-[ext_resource path="res://SFX/Music/Metal Gear Solid 2 [Sons of Liberty] - Complete Soundtrack - 113 - Engine Room (64kbit_Opus) (2).ogg" type="AudioStream" id=14]
-[ext_resource path="res://Tema.tres" type="Theme" id=15]
-[ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Tema.tres" type="Theme" id=14]
+[ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Escenas/Salida.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Escenas/Maletin.tscn" type="PackedScene" id=17]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 377.974, 318.424, 194.791, 504.693, 130.91, 443.654, 233.559, 341.96, 252.406, 323.289, 184.276, 131.972, 121.198, 193.861 )
@@ -64,11 +65,12 @@ position = Vector2( 1055.75, -351.887 )
 
 [node name="Jugador" parent="." instance=ExtResource( 6 )]
 position = Vector2( 62.1354, 64.5624 )
+collision_layer = 1
 collision_mask = 1
 
 [node name="Camera2D" type="Camera2D" parent="Jugador"]
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.75, 0.75 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 smoothing_enabled = true
@@ -76,6 +78,7 @@ smoothing_enabled = true
 [node name="Paredes" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )
 collision_layer = 2
+collision_mask = 17
 format = 1
 tile_data = PoolIntArray( -851954, 0, 262144, -851953, 0, 262146, -851952, 0, 262146, -851951, 0, 262146, -851950, 0, 262145, -786418, 0, 327682, -786414, 0, 327682, -720887, 0, 262144, -720886, 0, 262146, -720885, 0, 262146, -720884, 0, 262145, -720882, 0, 327682, -720878, 0, 327682, -655351, 0, 327682, -655348, 0, 327682, -655346, 0, 327683, -655345, 0, 262149, -655343, 0, 327686, -655342, 0, 327684, -589815, 0, 327682, -589812, 0, 327680, -589811, 0, 262146, -589810, 0, 327681, -589806, 0, 327682, -524279, 0, 327682, -524270, 0, 327682, -458743, 0, 327682, -458740, 0, 262144, -458739, 0, 262146, -458738, 0, 262145, -458734, 0, 327682, -393207, 0, 327683, -393206, 0, 262146, -393205, 0, 262146, -393204, 0, 327681, -393202, 0, 327683, -393201, 0, 262149, -393199, 0, 327686, -393198, 0, 327684, -327679, 0, 262144, -327678, 0, 262146, -327677, 0, 262146, -327676, 0, 262146, -327675, 0, 262146, -327674, 0, 262146, -327673, 0, 262146, -327672, 0, 262146, -327671, 0, 327684, -327666, 0, 327682, -327662, 0, 327682, -262143, 0, 327682, -262135, 0, 327682, -262130, 0, 327682, -262126, 0, 327682, -196607, 0, 327682, -196605, 0, 458758, -196601, 0, 458758, -196599, 0, 327680, -196598, 0, 262146, -196597, 0, 262146, -196596, 0, 262146, -196595, 0, 262146, -196594, 0, 327681, -196590, 0, 327682, -131071, 0, 327682, -131054, 0, 327682, -3, 0, 262144, -2, 0, 262146, -1, 0, 262146, -65536, 0, 262146, -65535, 0, 327681, -65518, 0, 327682, 65533, 0, 327682, 9, 0, 262144, 10, 0, 262146, 11, 0, 262146, 12, 0, 262149, 14, 0, 327686, 15, 0, 262146, 16, 0, 262147, 17, 0, 262146, 18, 0, 327681, 131069, 0, 327682, 65539, 0, 262144, 65540, 0, 262146, 65541, 0, 262145, 65544, 0, 327686, 65545, 0, 327681, 65552, 0, 327682, 196605, 0, 327682, 131075, 0, 327682, 131077, 0, 327682, 131088, 0, 327682, 262141, 0, 327680, 262142, 0, 262146, 262143, 0, 262146, 196608, 0, 262146, 196609, 0, 262146, 196610, 0, 262146, 196611, 0, 327681, 196613, 0, 327682, 196616, 0, 327685, 196618, 0, 458758, 196622, 0, 458758, 196624, 0, 327682, 262149, 0, 327680, 262150, 0, 262146, 262151, 0, 262146, 262152, 0, 327684, 262160, 0, 327682, 327688, 0, 327682, 327690, 0, 458758, 327692, 0, 458758, 327694, 0, 458758, 327696, 0, 327682, 393224, 0, 327682, 393232, 0, 327682, 458760, 0, 327682, 458762, 0, 458758, 458764, 0, 458758, 458766, 0, 458758, 458768, 0, 327682, 524296, 0, 327682, 524304, 0, 327682, 589832, 0, 327680, 589833, 0, 262146, 589834, 0, 262146, 589835, 0, 262146, 589836, 0, 262146, 589837, 0, 262146, 589838, 0, 262146, 589839, 0, 262146, 589840, 0, 327681 )
 
@@ -97,15 +100,10 @@ rotation = 1.39116
 
 [node name="Guardia" parent="Guardias" instance=ExtResource( 9 )]
 position = Vector2( 263.529, 22.5624 )
+collision_layer = 1
 collision_mask = 1
 
-[node name="VisionNocturna" type="CanvasModulate" parent="."]
-editor/display_folded = true
-color = Color( 0.12549, 1, 0, 1 )
-script = ExtResource( 10 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VisionNocturna"]
-volume_db = -20.0
+[node name="VisionNocturna" parent="." instance=ExtResource( 10 )]
 
 [node name="Muebles" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
@@ -121,11 +119,6 @@ position = Vector2( -112.654, 98.374 )
 [node name="Computadora" parent="Computadoras" instance=ExtResource( 13 )]
 cerradura_grupo = "Oficinas"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 14 )
-volume_db = -15.0
-autoplay = true
-
 [node name="MapaEtiquetas" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="MapaEtiquetas" groups=[
@@ -135,8 +128,17 @@ margin_left = 983.74
 margin_top = -758.432
 margin_right = 1139.74
 margin_bottom = -740.432
-theme = ExtResource( 15 )
+theme = ExtResource( 14 )
 text = "OFICINA PRINCIPAL"
 
-[node name="GUI" parent="." instance=ExtResource( 16 )]
+[node name="GUI" parent="." instance=ExtResource( 15 )]
+
+[node name="Salida" parent="." instance=ExtResource( 16 )]
+margin_left = -50.3108
+margin_top = 88.9219
+margin_right = -50.3108
+margin_bottom = 88.9219
+
+[node name="Maletin" parent="Salida" instance=ExtResource( 17 )]
+position = Vector2( 22.6102, -40.6983 )
 [connection signal="combinacion" from="Computadoras/Computadora" to="PuertasBloqueadas/PuertaBloqueada" method="_on_Computadora_combinacion"]

@@ -18,5 +18,5 @@ func abrir():
 		 $AnimationPlayer.play("abrir")
 
 func _input_event(viewport, event, shape_idx):
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and puede_hacer_click:
+	if (Input.is_mouse_button_pressed(BUTTON_LEFT) and puede_hacer_click) or Input.is_action_pressed("usar"):
 		abrir()

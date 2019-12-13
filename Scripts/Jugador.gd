@@ -1,19 +1,30 @@
 extends "res://Scripts/Caracter.gd"
 
+export var disfraces = 3 #cantidad de disfraces con la se comienza
+export var disfraz_duracion = 5 #tiempo que dura el disfraz
+export var disfraz_relentizamiento = 0.25
+
 var movimiento = Vector2()
 enum modos_vision {OSCURO, VISION_NOCTURNA}
 var modo_vision
 var vision_cambio_cooldown = false
 var disfrazado = false
+var velocidad_multiplicador = 1
 
 func _ready():
 	Global.Jugador = self
 	modo_vision = modos_vision.OSCURO
-	collision_layer = 16
+#	collision_layer = 1
+	$Timer.wait_time = disfraz_duracion
+	actualizar_disfraces_pantalla()
+	revelar()
 
 func _process(delta):
 	actualizar_movimiento(delta)
-	move_and_slide(movimiento)
+	move_and_slide(movimiento * velocidad_multiplicador)
+	if disfrazado:
+		$Label.rect_rotation = -rotation_degrees
+		$Label.text = str($Timer.time_left).pad_decimals(2)
 	
 func actualizar_movimiento(delta):
 	look_at(get_global_mouse_position())
@@ -65,19 +76,39 @@ func _on_ModoVisionReloj_timeout():
 func conmutar_disfraz():
 	if disfrazado:
 		revelar()
-	else:
+	elif disfraces > 0:
 		disfraz()
 	
 func revelar():
+	$Label.visible = false
 	$Sprite.texture = load(Global.jugador_sprite)
 	$Light2D.texture = load(Global.jugador_sprite)
 	$LightOccluder2D.occluder = load(Global.jugador_oclusor)
 	collision_layer = 1
+	
+	velocidad_multiplicador = 1
+	
 	disfrazado = false
 	
 func disfraz():
+	$Label.visible = true
 	$Sprite.texture = load(Global.caja_sprite)
 	$Light2D.texture = load(Global.caja_sprite)
 	$LightOccluder2D.occluder = load(Global.caja_oclusor)
 	collision_layer = 16
+	
+	velocidad_multiplicador = disfraz_relentizamiento
+	$Timer.start()
+	
+	disfraces -= 1
+	actualizar_disfraces_pantalla()
 	disfrazado = true
+
+func actualizar_disfraces_pantalla():
+	get_tree().call_group("DisfracesPantalla", "actualizar_disfraces", disfraces)
+	
+func colectar_maletin():
+	var botin = Node.new()
+	botin.set_name("Maletin")
+	add_child(botin)
+	get_tree().call_group("interface", "colectar_botin")

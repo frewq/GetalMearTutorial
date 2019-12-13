@@ -1,0 +1,138 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://Tilesets/SueloTiles.tres" type="TileSet" id=2]
+[ext_resource path="res://Escenas/Puerta.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tilesets/AutoTileParedes.tres" type="TileSet" id=4]
+[ext_resource path="res://Escenas/Caracteres/Jugador.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/VisionNocturna.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Escenas/Maletin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Escenas/Salida.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Lightmaps/radial.png" type="Texture" id=9]
+[ext_resource path="res://Lightmaps/torchmap.png" type="Texture" id=10]
+[ext_resource path="res://GFX/Interface/PNG/crossair_blueOutline.png" type="Texture" id=11]
+[ext_resource path="res://SFX/message.wav" type="AudioStream" id=12]
+[ext_resource path="res://Escenas/GuiTutorial.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 104, 72 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 96, 56 )
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Piso" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -131055, 0, 0, -131054, 0, 0, -131053, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65517, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65557, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0, 131093, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262163, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393237, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0 )
+
+[node name="Puerta" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1056, -32 )
+rotation = 1.57079
+
+[node name="Paredes" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -196603, 0, 262144, -196602, 0, 262146, -196601, 0, 262146, -196600, 0, 262146, -196599, 0, 262146, -196598, 0, 262146, -196597, 0, 262147, -196596, 0, 262146, -196595, 0, 262146, -196594, 0, 262146, -196593, 0, 262146, -196592, 0, 262147, -196591, 0, 262146, -196590, 0, 262146, -196589, 0, 262146, -196588, 0, 262145, -131067, 0, 327682, -131061, 0, 262150, -131056, 0, 262150, -131052, 0, 327682, -65531, 0, 327682, -65518, 0, 327685, -65516, 0, 327680, -65515, 0, 262146, -65514, 0, 262145, 5, 0, 327682, 11, 0, 262144, 12, 0, 262146, 13, 0, 262146, 14, 0, 262146, 15, 0, 262146, 16, 0, 262146, 17, 0, 262146, 18, 0, 327684, 22, 0, 327682, 65541, 0, 327682, 65547, 0, 327682, 65554, 0, 524290, 65555, 0, 458756, 65556, 0, 262152, 65558, 0, 327682, 131077, 0, 327682, 131083, 0, 327682, 131090, 0, 589826, 131091, 0, 458757, 131092, 0, 327688, 131094, 0, 327682, 196613, 0, 327680, 196614, 0, 262146, 196615, 0, 262146, 196616, 0, 262146, 196617, 0, 262146, 196618, 0, 262146, 196619, 0, 327684, 196626, 0, 327682, 196630, 0, 327682, 262155, 0, 327682, 262162, 0, 327682, 262164, 0, 327686, 262165, 0, 262146, 262166, 0, 327684, 327691, 0, 327682, 327698, 0, 327682, 327702, 0, 327682, 393227, 0, 327682, 393234, 0, 327680, 393235, 0, 262146, 393236, 0, 262149, 393238, 0, 327682, 458763, 0, 327682, 458774, 0, 327682, 524299, 0, 327682, 524306, 0, 327685, 524310, 0, 327682, 589835, 0, 327682, 589842, 0, 327682, 589846, 0, 327682, 655371, 0, 327682, 655378, 0, 327682, 655382, 0, 327682, 720907, 0, 327680, 720908, 0, 262146, 720909, 0, 262146, 720910, 0, 262146, 720911, 0, 262146, 720912, 0, 262146, 720913, 0, 262146, 720914, 0, 262148, 720915, 0, 262146, 720916, 0, 262146, 720917, 0, 262146, 720918, 0, 327681 )
+
+[node name="Jugador" parent="." instance=ExtResource( 5 )]
+position = Vector2( 472, 80 )
+
+[node name="Camera2D" type="Camera2D" parent="Jugador"]
+position = Vector2( -1.97998, -0.149315 )
+rotation = 1.57079
+current = true
+zoom = Vector2( 0.75, 0.75 )
+
+[node name="VisionNocturna" parent="." instance=ExtResource( 6 )]
+
+[node name="Maletin" parent="." instance=ExtResource( 7 )]
+position = Vector2( 856, 156.5 )
+
+[node name="Salida" parent="." instance=ExtResource( 8 )]
+margin_left = 768.0
+margin_top = 608.0
+margin_right = 768.0
+margin_bottom = 608.0
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 853, 156.5 )
+texture = ExtResource( 9 )
+shadow_enabled = true
+
+[node name="Light2D2" type="Light2D" parent="."]
+position = Vector2( 1048, 536 )
+rotation = -0.523599
+texture = ExtResource( 10 )
+shadow_enabled = true
+
+[node name="MarcadorObjetivos" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="ObjetivoMovimiento" type="Position2D" parent="MarcadorObjetivos"]
+position = Vector2( 872, -56 )
+
+[node name="ObjetivoPuerta" type="Position2D" parent="MarcadorObjetivos"]
+position = Vector2( 1112, -30 )
+
+[node name="ObjetivoVisionNocturna" type="Position2D" parent="MarcadorObjetivos"]
+position = Vector2( 1376, 129 )
+
+[node name="ObjetivoBotin" type="Position2D" parent="MarcadorObjetivos"]
+position = Vector2( 856, 160 )
+
+[node name="ObjetivoSalida" type="Position2D" parent="MarcadorObjetivos"]
+position = Vector2( 792, 688 )
+
+[node name="PunteroObjetivo" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 584, -48 )
+texture = ExtResource( 11 )
+
+[node name="Light2D" type="Light2D" parent="PunteroObjetivo"]
+texture = ExtResource( 11 )
+
+[node name="ObjetivoAreas" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="ObjetivoMovimiento" type="Area2D" parent="ObjetivoAreas"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetivoAreas/ObjetivoMovimiento"]
+position = Vector2( 872, -56 )
+shape = SubResource( 1 )
+
+[node name="ObjetivoPuerta" type="Area2D" parent="ObjetivoAreas"]
+position = Vector2( 240, 24 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetivoAreas/ObjetivoPuerta"]
+position = Vector2( 872, -56 )
+shape = SubResource( 2 )
+
+[node name="ObjetivoVisionNocturna" type="Area2D" parent="ObjetivoAreas"]
+position = Vector2( 504, 184 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetivoAreas/ObjetivoVisionNocturna"]
+position = Vector2( 872, -56 )
+shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="GuiTutorial" parent="." instance=ExtResource( 13 )]
+[connection signal="body_entered" from="Maletin" to="." method="_on_Maletin_body_entered"]
+[connection signal="body_entered" from="ObjetivoAreas/ObjetivoMovimiento" to="." method="_on_ObjetivoMovimiento_body_entered"]
+[connection signal="body_entered" from="ObjetivoAreas/ObjetivoPuerta" to="." method="_on_ObjetivoPuerta_body_entered"]
+[connection signal="body_entered" from="ObjetivoAreas/ObjetivoVisionNocturna" to="." method="_on_ObjetivoVisionNocturna_body_entered"]
