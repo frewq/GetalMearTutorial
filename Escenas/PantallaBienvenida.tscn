@@ -84,7 +84,7 @@ margin_bottom = 41.0
 rect_min_size = Vector2( 200, 0 )
 text = "SALIR"
 [connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer/ButtonTutorial" to="." method="_on_ButtonTutorial_pressed"]
-[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/ButtonHistoria" to="." method="_on_ButtonHistoria_pressed"]
 [connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/ButtonHistoria" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3/ButtonSalir" to="." method="_on_ButtonSalir_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer2/ButtonHistoria" to="." method="_on_ButtonHistoria_pressed"]
 [connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3/ButtonSalir" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/NinePatchRect/VBoxContainer/CenterContainer3/ButtonSalir" to="." method="_on_ButtonSalir_pressed"]
