@@ -5,6 +5,9 @@ var destinos_posibles = []
 var camino = []
 var destino = Vector2()
 
+func _init().(280, 40): #sobreescribe la variable heredada de detectarjugador
+	pass
+
 export var relentizar_caminata = 0.5
 export var nav_parar_limite = 5
 
